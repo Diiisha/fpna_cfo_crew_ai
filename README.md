@@ -1,75 +1,175 @@
-# FP&A CFO Crew AI – Autonomous Finance Team
+# 🤖 FP&A CFO Crew AI
 
-Multi-agent FP&A system powered by CrewAI + OpenAI GPT-4-Turbo.
+> **A production-ready Multi-Agent AI application demonstrating AI workflow orchestration, LLM integration, and intelligent automation using CrewAI, FastAPI, and Streamlit.**
+
+## 📌 Overview
+
+This project demonstrates how multiple specialized AI agents collaborate to solve complex business workflows using Large Language Models (LLMs).
+
+Although the implementation uses **Financial Planning & Analysis (FP&A)** as its use case, the underlying architecture is designed to be reusable across multiple domains such as customer support, healthcare, HR, operations, and enterprise automation.
+
+## ✨ Key Highlights
+
+- 🤖 Multi-Agent architecture built with CrewAI
+- 🧠 LLM-powered task orchestration
+- ⚡ FastAPI backend
+- 📊 Interactive Streamlit dashboard
+- 🗄️ Structured data integration
+- 🔄 Modular and scalable architecture
+- 🧩 Easily adaptable to different business domains
+
+## 🛠 Tech Stack
+
+- Python
+- CrewAI
+- FastAPI
+- Streamlit
+- PostgreSQL
+- DuckDB
+- OpenAI / LLM APIs
+
+
+---
+
+## 🏗️ High-Level Architecture
+
+```text
+                         User
+                           │
+                           ▼
+                  Streamlit Dashboard
+                           │
+                           ▼
+                    FastAPI Backend
+                           │
+                           ▼
+              CrewAI Multi-Agent System
+                           │
+        ┌──────────────────┼──────────────────┐
+        ▼                  ▼                  ▼
+ Data Connector      FP&A Analyst      CFO Copilot
+        │                  │                  │
+        └──────────────────┼──────────────────┘
+                           ▼
+                 OpenAI / Gemini LLM
+                           │
+                           ▼
+              Business Insights & Reports
+```
 
 ## Agents
 
-- Data Connector → integrates SAP / Salesforce / BI data
-- FP&A Analyst → performs forecasting & variance analysis
-- Profit Twin → runs scenario simulations
-- CFO Copilot → summarizes executive insights
+### 🔗 Data Connector Agent
+Responsible for collecting and preparing structured business data from multiple sources before it is processed by other AI agents.
+
+**Responsibilities**
+- Integrates structured datasets
+- Cleans and prepares business data
+- Provides consistent inputs for downstream agents
+
+---
+
+### 📊 FP&A Analyst Agent
+Analyzes financial and operational data to generate forecasts, identify trends, and perform variance analysis.
+
+**Responsibilities**
+- Forecasting
+- Variance analysis
+- Financial performance evaluation
+- Business insight generation
+
+---
+
+### 📈 Profit Twin Agent
+Performs scenario analysis to evaluate how different business decisions affect profitability and operational performance.
+
+**Responsibilities**
+- Scenario simulation
+- Profitability analysis
+- Impact assessment
+
+---
+
+### 👨‍💼 CFO Copilot Agent
+Summarizes outputs from all agents into concise executive-level insights for decision-makers.
+
+**Responsibilities**
+- Executive summaries
+- Recommendation generation
+- Business reporting
 
 ## Setup
 
-1. Install dependencies:
+## ⚙️ Setup
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+### Prerequisites
 
-2. Set your OpenAI key:
+Before running the project, ensure you have:
 
-   ```bash
-   export OPENAI_API_KEY="sk-..."
-   ```
+- Python 3.10+
+- Git
+- OpenAI API Key (or compatible LLM provider)
 
-   Or on Windows PowerShell:
+---
 
-   ```powershell
-   $env:OPENAI_API_KEY="sk-..."
-   ```
+### 1️⃣ Clone the Repository
 
-   Or create a `.env` file:
+```bash
+git clone https://github.com/Diiisha/fpna_cfo_crew_ai.git
+cd fpna_cfo_crew_ai
+```
 
-   ```
-   OPENAI_API_KEY=sk-...
-   ```
+---
 
-3. Run tasks:
+### 2️⃣ Install Dependencies
 
-   ```bash
-   python tasks/data_integration.py
-   python tasks/fpna_forecast.py
-   python tasks/profit_simulation.py
-   python tasks/executive_summary.py
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-4. Launch dashboard:
+---
 
-   ```bash
-   streamlit run dashboards/fpna_dashboard.py
-   ```
+### 3️⃣ Configure Environment Variables
+
+Create a `.env` file:
+
+```env
+OPENAI_API_KEY=your_api_key
+```
+
+---
+
+### 4️⃣ Run the Application
+
+```bash
+streamlit run dashboards/fpna_dashboard.py
+```
 
 ## Project Structure
 
-```
+```text
 fpna_cfo_crew_ai/
- ├── crew_config.py
- ├── llm_openai.py
- ├── tasks/
- │    ├── data_integration.py
- │    ├── fpna_forecast.py
- │    ├── profit_simulation.py
- │    └── executive_summary.py
- ├── data/
- │    ├── sap_costs.csv
- │    ├── salesforce_deals.csv
- │    ├── financial_summary.csv
- │    └── unified_financials.csv
- ├── dashboards/
- │    └── fpna_dashboard.py
- ├── requirements.txt
- └── README.md
+│
+├── dashboards/          # Streamlit user interface
+├── data/                # Sample datasets and processed data
+├── prompts/             # Prompt templates used by AI agents
+├── tasks/               # Agent task definitions and workflows
+├── utils/               # Shared helper functions and utilities
+├── api_server.py        # FastAPI backend service
+├── app.py               # Application entry point
+├── requirements.txt     # Project dependencies
+├── .env.example         # Environment variable template
+└── README.md            # Project documentation
 ```
+
+### Folder Overview
+
+| Folder | Purpose |
+|--------|---------|
+| **dashboards/** | Interactive Streamlit interface |
+| **data/** | Stores datasets used by the application |
+| **prompts/** | Contains prompt templates for AI agents |
+| **tasks/** | Defines agent workflows and execution logic |
+| **utils/** | Shared utility modules across the project |
 
 
